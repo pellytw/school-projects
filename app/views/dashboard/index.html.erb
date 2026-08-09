@@ -1,0 +1,51 @@
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Gestion educativa</p>
+    <h1>Proyectos escolares</h1>
+    <p class="lede">Una base Rails simple para registrar localidades, escuelas y proyectos institucionales.</p>
+  </div>
+
+  <%= link_to "Nuevo proyecto", new_project_path, class: "button primary" %>
+</section>
+
+<section class="stats-grid">
+  <article class="stat-card">
+    <span>Localidades</span>
+    <strong><%= @localities_count %></strong>
+  </article>
+  <article class="stat-card">
+    <span>Escuelas</span>
+    <strong><%= @schools_count %></strong>
+  </article>
+  <article class="stat-card">
+    <span>Proyectos</span>
+    <strong><%= @projects_count %></strong>
+  </article>
+  <article class="stat-card">
+    <span>Activos</span>
+    <strong><%= @active_projects_count %></strong>
+  </article>
+</section>
+
+<section class="panel">
+  <div class="panel-header">
+    <h2>Ultimos proyectos</h2>
+    <%= link_to "Ver todos", projects_path %>
+  </div>
+
+  <% if @recent_projects.any? %>
+    <div class="list">
+      <% @recent_projects.each do |project| %>
+        <%= link_to project_path(project), class: "list-row" do %>
+          <span>
+            <strong><%= project.title %></strong>
+            <small><%= project.school.name %> - <%= project.school.locality.display_name %></small>
+          </span>
+          <span class="badge"><%= Project::STATUSES.fetch(project.status.to_sym) %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="empty-state">Todavia no hay proyectos cargados.</p>
+  <% end %>
+</section>

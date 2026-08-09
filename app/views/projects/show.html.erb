@@ -1,0 +1,20 @@
+<section class="page-header">
+  <div>
+    <p class="eyebrow"><%= Project::CATEGORIES.fetch(@project.category.to_sym) %></p>
+    <h1><%= @project.title %></h1>
+    <p class="lede"><%= @project.school.name %> - <%= @project.school.locality.display_name %></p>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Editar", edit_project_path(@project), class: "button" %>
+    <%= link_to "Volver", projects_path, class: "button" %>
+    <%= button_to "Eliminar", @project, method: :delete, class: "button danger", form: { data: { turbo_confirm: "Eliminar este proyecto?" } } %>
+  </div>
+</section>
+
+<section class="details">
+  <p><strong>Estado:</strong> <%= Project::STATUSES.fetch(@project.status.to_sym) %></p>
+  <p><strong>Inicio:</strong> <%= @project.starts_on || "Sin definir" %></p>
+  <p><strong>Fin:</strong> <%= @project.ends_on || "Sin definir" %></p>
+  <p><strong>Descripcion:</strong> <%= @project.description.presence || "Sin descripcion" %></p>
+</section>

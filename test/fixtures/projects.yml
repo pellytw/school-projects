@@ -1,0 +1,17 @@
+one:
+  title: Huerta escolar comunitaria
+  description: Proyecto ambiental para trabajar ciencias naturales.
+  category: environment
+  status: active
+  starts_on: 2026-03-15
+  ends_on: 2026-11-30
+  school: one
+
+two:
+  title: Lecturas patagonicas
+  description: Ciclo de lectura y escritura.
+  category: reading
+  status: draft
+  starts_on: 2026-05-05
+  ends_on: 2026-09-15
+  school: two

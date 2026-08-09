@@ -1,0 +1,30 @@
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Localidad</p>
+    <h1><%= @locality.name %></h1>
+    <p class="lede"><%= @locality.province %></p>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Editar", edit_locality_path(@locality), class: "button" %>
+    <%= link_to "Volver", localities_path, class: "button" %>
+    <%= button_to "Eliminar", @locality, method: :delete, class: "button danger", form: { data: { turbo_confirm: "Eliminar esta localidad?" } } %>
+  </div>
+</section>
+
+<section class="panel">
+  <div class="panel-header">
+    <h2>Escuelas</h2>
+    <%= link_to "Nueva escuela", new_school_path %>
+  </div>
+
+  <% if @locality.schools.any? %>
+    <div class="list">
+      <% @locality.schools.order(:name).each do |school| %>
+        <%= link_to school.display_name, school_path(school), class: "list-row" %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="empty-state">Todavia no hay escuelas en esta localidad.</p>
+  <% end %>
+</section>

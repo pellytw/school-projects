@@ -1,0 +1,13 @@
+one:
+  name: Escuela Industrial Nro 1
+  code: EET-01
+  address: Av. San Martin 1250
+  level: secondary
+  locality: one
+
+two:
+  name: Escuela Provincial Primaria Nro 22
+  code: EPP-22
+  address: Belgrano 845
+  level: primary
+  locality: two

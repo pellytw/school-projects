@@ -1,0 +1,26 @@
+<%= form_with(model: locality, class: "form") do |form| %>
+  <% if locality.errors.any? %>
+    <div class="error-box">
+      <h2>No se pudo guardar la localidad</h2>
+      <ul>
+        <% locality.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "Nombre" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :province, "Provincia" %>
+    <%= form.text_field :province %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "button primary" %>
+  </div>
+<% end %>

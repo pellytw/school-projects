@@ -1,0 +1,39 @@
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Escuela</p>
+    <h1><%= @school.name %></h1>
+    <p class="lede"><%= @school.locality.display_name %></p>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Editar", edit_school_path(@school), class: "button" %>
+    <%= link_to "Volver", schools_path, class: "button" %>
+    <%= button_to "Eliminar", @school, method: :delete, class: "button danger", form: { data: { turbo_confirm: "Eliminar esta escuela?" } } %>
+  </div>
+</section>
+
+<section class="details">
+  <p><strong>Codigo:</strong> <%= @school.code.presence || "Sin codigo" %></p>
+  <p><strong>Direccion:</strong> <%= @school.address.presence || "Sin direccion" %></p>
+  <p><strong>Nivel:</strong> <%= School::LEVELS.fetch(@school.level.to_sym) %></p>
+</section>
+
+<section class="panel">
+  <div class="panel-header">
+    <h2>Proyectos</h2>
+    <%= link_to "Nuevo proyecto", new_project_path %>
+  </div>
+
+  <% if @school.projects.any? %>
+    <div class="list">
+      <% @school.projects.order(created_at: :desc).each do |project| %>
+        <%= link_to project_path(project), class: "list-row" do %>
+          <span><strong><%= project.title %></strong></span>
+          <span class="badge"><%= Project::STATUSES.fetch(project.status.to_sym) %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="empty-state">Todavia no hay proyectos para esta escuela.</p>
+  <% end %>
+</section>

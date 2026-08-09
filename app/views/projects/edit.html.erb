@@ -1,0 +1,15 @@
+<% content_for :title, "Editar proyecto" %>
+
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Gestion escolar</p>
+    <h1>Editar proyecto</h1>
+  </div>
+</section>
+
+<%= render "form", project: @project %>
+
+<div class="actions">
+  <%= link_to "Ver", @project, class: "button" %>
+  <%= link_to "Volver", projects_path, class: "button" %>
+</div>

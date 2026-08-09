@@ -1,0 +1,21 @@
+<% content_for :title, "Localidades" %>
+
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Territorio</p>
+    <h1>Localidades</h1>
+  </div>
+
+  <%= link_to "Nueva localidad", new_locality_path, class: "button primary" %>
+</section>
+
+<div class="list">
+  <% @localities.each do |locality| %>
+    <%= link_to locality_path(locality), class: "list-row" do %>
+      <span>
+        <strong><%= locality.name %></strong>
+        <small><%= locality.province %> - <%= pluralize(locality.schools.count, "escuela") %></small>
+      </span>
+    <% end %>
+  <% end %>
+</div>

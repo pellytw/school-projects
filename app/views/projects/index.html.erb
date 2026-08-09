@@ -1,0 +1,22 @@
+<% content_for :title, "Proyectos" %>
+
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Gestion escolar</p>
+    <h1>Proyectos</h1>
+  </div>
+
+  <%= link_to "Nuevo proyecto", new_project_path, class: "button primary" %>
+</section>
+
+<div class="list">
+  <% @projects.each do |project| %>
+    <%= link_to project_path(project), class: "list-row" do %>
+      <span>
+        <strong><%= project.title %></strong>
+        <small><%= project.school.name %> - <%= project.school.locality.display_name %></small>
+      </span>
+      <span class="badge"><%= Project::STATUSES.fetch(project.status.to_sym) %></span>
+    <% end %>
+  <% end %>
+</div>

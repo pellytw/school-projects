@@ -1,0 +1,15 @@
+<% content_for :title, "Editar localidad" %>
+
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Territorio</p>
+    <h1>Editar localidad</h1>
+  </div>
+</section>
+
+<%= render "form", locality: @locality %>
+
+<div class="actions">
+  <%= link_to "Ver", @locality, class: "button" %>
+  <%= link_to "Volver", localities_path, class: "button" %>
+</div>

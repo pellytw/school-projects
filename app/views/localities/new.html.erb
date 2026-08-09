@@ -1,0 +1,12 @@
+<% content_for :title, "Nueva localidad" %>
+
+<section class="page-header">
+  <div>
+    <p class="eyebrow">Territorio</p>
+    <h1>Nueva localidad</h1>
+  </div>
+</section>
+
+<%= render "form", locality: @locality %>
+
+<%= link_to "Volver", localities_path, class: "button" %>

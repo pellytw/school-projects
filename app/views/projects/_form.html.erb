@@ -1,0 +1,51 @@
+<%= form_with(model: project, class: "form") do |form| %>
+  <% if project.errors.any? %>
+    <div class="error-box">
+      <h2>No se pudo guardar el proyecto</h2>
+      <ul>
+        <% project.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, "Titulo" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, "Descripcion" %>
+    <%= form.text_area :description, rows: 5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category, "Categoria" %>
+    <%= form.select :category, Project::CATEGORIES.map { |value, label| [label, value] }, prompt: "Seleccionar categoria" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status, "Estado" %>
+    <%= form.select :status, Project::STATUSES.map { |value, label| [label, value] }, prompt: "Seleccionar estado" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :starts_on, "Fecha de inicio" %>
+    <%= form.date_field :starts_on %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ends_on, "Fecha de fin" %>
+    <%= form.date_field :ends_on %>
+  </div>
+
+  <div class="field">
+    <%= form.label :school_id, "Escuela" %>
+    <%= form.collection_select :school_id, @schools, :id, :display_name, prompt: "Seleccionar escuela" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "button primary" %>
+  </div>
+<% end %>
